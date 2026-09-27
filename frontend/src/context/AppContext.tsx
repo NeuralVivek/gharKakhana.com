@@ -13,9 +13,7 @@ export const AppProvider = ({children}:AppContextProps)=>{
     const [isAuth,setIsAuth] = useState(false);
     const [loading,setLoading] = useState(true);
 
-    const [location,setLocation] = useState(null);
-    const [loadingLocation,setLoadingLocation] = useState(false);
-    const [city,setCity] = useState("Feching location...");
+    const [location] = useState(null);
 
     async function fetchUser(){
         const token = localStorage.getItem("token");

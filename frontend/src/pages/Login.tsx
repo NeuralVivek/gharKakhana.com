@@ -1,4 +1,3 @@
-import React from 'react'
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 import {authServies} from "../main.tsx"
@@ -6,6 +5,7 @@ import axios from "axios"
 import { toast } from 'react-hot-toast/headless'
 import { useGoogleLogin } from '@react-oauth/google';
 import {FcGoogle} from "react-icons/fc"
+import { useAppData } from "../context/AppContext.tsx"
 
 
 
@@ -13,6 +13,7 @@ const Login = () => {
 
     const [loading,setLoading] = useState(false);
     const navigate = useNavigate();
+    const {setUser,setIsAuth} = useAppData();
 
     const responseGoogle= async(authResult:any)=>{
         setLoading(true);
@@ -24,6 +25,8 @@ const Login = () => {
             localStorage.setItem("token",result.data.token);
             toast.success(result.data.message);
             setLoading(false);
+            setUser(result.data.user);
+            setIsAuth(true);
             navigate("/");
         } catch (error) {
             console.log(error);

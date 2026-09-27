@@ -6,7 +6,7 @@ import { isAuth } from "../middlewhere/isauth.js";
 
 
   router.post("/login", loginUser);
-  router.put("/add-role", isAuth,addUserRole);
+  router.put("/role", isAuth,addUserRole);
   router.get("/me",isAuth,fetchProfile);
 
 
